@@ -1,7 +1,7 @@
 document.querySelector("#search").addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const cityName = document.querySelector('#city_name').value;
+    const cityName = document.querySelector('#city_name').value.trim().toLowerCase()
 
     if(!cityName) {
         document.querySelector("#weather").classList.remove('show')
@@ -15,7 +15,6 @@ document.querySelector("#search").addEventListener('submit', async (event) => {
     const results = await fetch(apiUrl)
     const json = await results.json()
 
-    console.log(json)
     if (json.cod === 200) {
         showInfo({
             city: json.name,
